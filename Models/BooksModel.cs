@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PAIN_WPF.Models
+namespace PAIN_WPF
 {
     public class BooksModel
     {
