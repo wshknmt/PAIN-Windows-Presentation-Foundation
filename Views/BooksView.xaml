@@ -8,21 +8,21 @@
     <DockPanel>
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar Margin="0">
-                <Button Content="Add song" Command="{Binding Path=AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
-                <Button Content="Edit song" Command="{Binding Path=EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
-                <Button Content="Delete song" Command="{Binding Path=DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <Button Content="Add book" Command="{Binding Path=AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <Button Content="Edit book" Command="{Binding Path=EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <Button Content="Delete book" Command="{Binding Path=DeleteCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
                 <Button Content="New window" Command="{Binding Path=NewWindowCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
                 <TextBox Height="25" Margin="0" TextWrapping="Wrap" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="150"/>
             </ToolBar>
         </ToolBarTray>
         <Grid>
-            <ListView x:Name="SongsListView" ItemsSource="{Binding Songs}" SelectedItem="{Binding SelectedSong, Mode=TwoWay}" Margin="0">
+            <ListView x:Name="BooksListView" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" Margin="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="125"/>
                         <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Author}" Width="125"/>
-                        <GridViewColumn Header="Release" DisplayMemberBinding="{Binding Release, StringFormat='dd.MM.yyyy'}" Width="125"/>
-                        <GridViewColumn Header="Genre" DisplayMemberBinding="{Binding MusicGenre}" Width="125"/>
+                        <GridViewColumn Header="Release Date" DisplayMemberBinding="{Binding ReleaseDate, StringFormat='dd.MM.yyyy'}" Width="125"/>
+                        <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category}" Width="125"/>
                     </GridView>
                 </ListView.View>
             </ListView>
