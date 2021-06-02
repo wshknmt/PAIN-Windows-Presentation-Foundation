@@ -5,9 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:PAIN_WPF.Views"
       xmlns:vm="clr-namespace:PAIN_WPF.ViewModels"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      MinHeight="215" MinWidth="280">
+      mc:Ignorable="d"
+      MinHeight="454" MinWidth="462" Width="462" Height="454">
     <UserControl.Resources>
         <Style TargetType="TextBox">
             <Style.Triggers>
@@ -28,24 +27,24 @@
     <Grid MinWidth="280">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="55"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0, 0, 0, 0" MinHeight="160" MinWidth="280">
+        <Grid Grid.Row="0" Margin="0,0,0,10" MinHeight="160" MinWidth="280">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" MinHeight="40"/>
-                <RowDefinition Height="*" MinHeight="40"/>
-                <RowDefinition Height="*" MinHeight="40"/>
-                <RowDefinition Height="*" MinHeight="40"/>
+                <RowDefinition Height="80*" MinHeight="40"/>
+                <RowDefinition Height="80*" MinHeight="40"/>
+                <RowDefinition Height="80*" MinHeight="40"/>
+                <RowDefinition Height="80*" MinHeight="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="*" MinWidth="200"/>
+                <ColumnDefinition Width="98"/>
+                <ColumnDefinition MinWidth="200"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Title:" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <Label Content="Author:" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <Label Content="Release:" Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <Label Content="Genre:" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <TextBox Grid.Row="0" Grid.Column="1"  Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center">
+            <Label Content="Title:" Grid.Row="0" Grid.Column="0" Margin="10,22,0,19" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="35"/>
+            <Label Content="Author:" Grid.Row="1" Grid.Column="0" Margin="10,27,0,26" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="49"/>
+            <Label Content="ReleaseDate:" Grid.Row="2" Grid.Column="0" Margin="10,32,0,29" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="75"/>
+            <Label Content="Category:" Grid.Row="3" Grid.Column="0" Margin="10,33,0,37" VerticalAlignment="Center" HorizontalAlignment="Left" Height="26" Width="61"/>
+            <TextBox Grid.Row="0" Grid.Column="1"  Margin="10,36,36,34" TextWrapping="Wrap" VerticalAlignment="Center" Height="26">
                 <TextBox.Text>
                     <Binding Path="Title" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -54,7 +53,7 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox Grid.Row="1" Grid.Column="1"  Margin="10,0,10,0" TextWrapping="Wrap" VerticalAlignment="Center">
+            <TextBox Grid.Row="1" Grid.Column="1"  Margin="10,44,36,27" TextWrapping="Wrap" VerticalAlignment="Center" Height="25">
                 <TextBox.Text>
                     <Binding Path="Author" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
@@ -63,16 +62,24 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <DatePicker Grid.Row="2" Grid.Column="1" Margin="10,0,10,0" VerticalAlignment="Center">
+            <DatePicker Grid.Row="2" Grid.Column="1" Margin="10,36,36,34" VerticalAlignment="Center" Height="26">
                 <DatePicker.SelectedDate>
-                    <Binding Path="Release" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                    <Binding Path="ReleaseDate" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                         <Binding.ValidationRules>
                             <vm:DataValidator ValidationStep="UpdatedValue"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </DatePicker.SelectedDate>
             </DatePicker>
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="10,0,10,0" TextWrapping="Wrap" Text="{Binding MusicGenre}" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="10,33,36,36" TextWrapping="Wrap" VerticalAlignment="Center" Height="27" RenderTransformOrigin="0.468,2.47">
+                <TextBox.Text>
+                    <Binding Path="Category" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <vm:DataValidator ValidationStep="UpdatedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </Grid>
         <Grid Grid.Row="1" Margin="0, 0, 0, 0" Height="55" MinWidth="280">
             <Grid.ColumnDefinitions>
@@ -81,8 +88,8 @@
                 <ColumnDefinition Width="140"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Ok" Grid.Column="1" Command="{Binding Path=OkCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75"/>
-            <Button Content="Cancel" Grid.Column="2" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75"/>
+            <Button Content="Ok" Grid.Column="1" Command="{Binding Path=OkCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="93" Height="35" Margin="28,10,19,10"/>
+            <Button Content="Cancel" Grid.Column="2" Command="{Binding Path=CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="93" Height="35" Margin="23,10,24,10"/>
         </Grid>
     </Grid>
 </UserControl>

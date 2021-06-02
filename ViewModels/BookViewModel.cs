@@ -37,12 +37,17 @@ namespace PAIN_WPF.ViewModels
             set { releaseDate = value; OkCommand.NotifyCanExecuteChanged(); }
         }
 
-        public string Category { get; set; }
+        private string category;
+        public string Category 
+        {   
+            get { return category; }
+            set { category = value; OkCommand.NotifyCanExecuteChanged(); }
+        }
 
         public RelayCommand<BookViewModel> OkCommand { get; } = new RelayCommand<BookViewModel>
             (
                 (bookViewModel) => { bookViewModel.Ok(); },
-                (bookViewModel) => { return bookViewModel.Title != "" && bookViewModel.Author != "" && bookViewModel.ReleaseDate <= DateTime.Now; }
+                (bookViewModel) => { return bookViewModel.Title != "" && bookViewModel.Author != "" && bookViewModel.ReleaseDate <= DateTime.Now && bookViewModel.Category != ""; }
             );
         public RelayCommand<BookViewModel> CancelCommand { get; } = new RelayCommand<BookViewModel>
             (
@@ -71,7 +76,7 @@ namespace PAIN_WPF.ViewModels
 
         public void Ok()
         {
-            if (Title == "" || Author == "" || ReleaseDate > DateTime.Now)
+            if (Title == "" || Author == "" || ReleaseDate > DateTime.Now || Category == "")
                 return;
             if (Book == null)
             {
